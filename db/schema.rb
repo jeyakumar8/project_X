@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2020_01_04_152001) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
   end
 
   create_table "stores", force: :cascade do |t|
-    t.integer "store_name"
+    t.string "store_name"
     t.string "latitude"
     t.string "longitude"
     t.string "s_eta"
