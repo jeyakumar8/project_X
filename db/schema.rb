@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_01_04_152001) do
 
   create_table "stores", force: :cascade do |t|
     t.string "store_name"
-    t.string "latitude"
-    t.string "longitude"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.string "s_eta"
   end
 
