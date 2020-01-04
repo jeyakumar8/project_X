@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_150414) do
+ActiveRecord::Schema.define(version: 2020_01_04_152001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "name"
+    t.boolean "available"
+  end
 
   create_table "products", force: :cascade do |t|
     t.integer "name"
@@ -24,6 +29,12 @@ ActiveRecord::Schema.define(version: 2020_01_04_150414) do
     t.string "latitude"
     t.string "longitude"
     t.string "s_eta"
+  end
+
+  create_table "stores_drivers", force: :cascade do |t|
+    t.integer "driver_id"
+    t.integer "store_id"
+    t.string "eta"
   end
 
   create_table "stores_products", force: :cascade do |t|
