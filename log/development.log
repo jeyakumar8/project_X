@@ -133,3 +133,82 @@ Migrating to CreateTableStoresProducts (20200104150414)
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(279088437195799245)[0m
   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (26.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (29.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(279088437195799245)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTableStores (20200104133125)
+  [1m[35m (35.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "stores" ("id" bigserial primary key, "store_name" character varying, "latitude" character varying, "longitude" character varying, "s_eta" character varying)[0m
+  [1m[36mprimary::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200104133125"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableProduct (20200104145028)
+  [1m[35m (39.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200104145028"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableStoresProducts (20200104150414)
+  [1m[35m (38.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "stores_products" ("id" bigserial primary key, "product_id" integer, "store_id" integer, "product_rating" character varying)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200104150414"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableDriver (20200104151821)
+  [1m[35m (25.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" bigserial primary key, "name" character varying, "available" boolean)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200104151821"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableDriverStore (20200104152001)
+  [1m[35m (39.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "stores_drivers" ("id" bigserial primary key, "driver_id" integer, "store_id" integer, "eta" character varying)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200104152001"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-01-04 15:27:22.908291"], ["updated_at", "2020-01-04 15:27:22.908291"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(279088437195799245)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Create (34.0ms)[0m  [1m[32mINSERT INTO "stores" ("store_name") VALUES ($1) RETURNING "id"[0m  [["store_name", "name"]]
+  [1m[35m (38.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Create (0.7ms)[0m  [1m[32mINSERT INTO "stores" ("store_name") VALUES ($1) RETURNING "id"[0m  [["store_name", "ad"]]
+  [1m[35m (40.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (1.2ms)[0m  [1m[32mINSERT INTO "products" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "product"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStore Load (0.5ms)[0m  [1m[34mSELECT "stores".* FROM "stores" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores" ORDER BY "stores"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "stores"."id" FROM "stores"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Create (0.7ms)[0m  [1m[32mINSERT INTO "stores" ("store_name") VALUES ($1) RETURNING "id"[0m  [["store_name", "name2"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Create (0.6ms)[0m  [1m[32mINSERT INTO "stores" ("store_name") VALUES ($1) RETURNING "id"[0m  [["store_name", "name"]]
+  [1m[35m (30.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStoresProduct Load (65.5ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."store_id" = $1 LIMIT $2[0m  [["store_id", 4], ["LIMIT", 11]]
+  [1m[36mStore Load (0.4ms)[0m  [1m[34mSELECT "stores".* FROM "stores" ORDER BY "stores"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStoresProduct Load (0.4ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."store_id" = $1 LIMIT $2[0m  [["store_id", 4], ["LIMIT", 11]]
+  [1m[36mStore Load (0.6ms)[0m  [1m[34mSELECT "stores".* FROM "stores" ORDER BY "stores"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStore Load (0.7ms)[0m  [1m[34mSELECT "stores".* FROM "stores" ORDER BY "stores"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStore Create (0.6ms)[0m  [1m[32mINSERT INTO "stores" ("store_name", "latitude", "longitude", "s_eta") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["store_name", "store 1"], ["latitude", "12.122"], ["longitude", "-12.223"], ["s_eta", "300"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "t-shirt"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStoresProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "stores_products" ("product_id", "store_id", "product_rating") VALUES ($1, $2, $3) RETURNING "id"[0m  [["product_id", 2], ["store_id", 5], ["product_rating", "4.4"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStoresProduct Load (0.4ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."product_id" = $1 LIMIT $2[0m  [["product_id", 2], ["LIMIT", 11]]
+  [1m[36mStoresProduct Load (0.4ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."product_id" = $1 AND "stores_products"."store_id" = $2 LIMIT $3[0m  [["product_id", 2], ["store_id", 5], ["LIMIT", 11]]
+  [1m[36mStoresProduct Load (0.5ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."product_id" = $1 AND "stores_products"."store_id" = $2 LIMIT $3[0m  [["product_id", 2], ["store_id", 5], ["LIMIT", 11]]
+  [1m[36mStoresProduct Load (0.4ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."product_id" = $1 AND "stores_products"."id" = $2 LIMIT $3[0m  [["product_id", 2], ["id", nil], ["LIMIT", 1]]
+  [1m[36mStoresProduct Load (0.5ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."product_id" = $1 AND "stores_products"."store_id" = $2 LIMIT $3[0m  [["product_id", 2], ["store_id", 5], ["LIMIT", 1]]
+  [1m[36mStoresProduct Load (0.5ms)[0m  [1m[34mSELECT "stores_products".* FROM "stores_products" WHERE "stores_products"."product_id" = $1 AND "stores_products"."store_id" = $2 LIMIT $3[0m  [["product_id", 2], ["store_id", 5], ["LIMIT", 1]]
