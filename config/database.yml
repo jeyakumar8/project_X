@@ -12,7 +12,7 @@ default: &default
 development:
   adapter: postgresql
   database: project_development
-  username: jeyag
+  username: postgres
   password:
   min_messages: warning
   host: localhost

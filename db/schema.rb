@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_133125) do
+ActiveRecord::Schema.define(version: 2020_01_04_150414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.integer "name"
+  end
 
   create_table "stores", force: :cascade do |t|
     t.integer "store_name"
     t.string "latitude"
     t.string "longitude"
     t.string "s_eta"
+  end
+
+  create_table "stores_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "store_id"
+    t.string "product_rating"
   end
 
 end
