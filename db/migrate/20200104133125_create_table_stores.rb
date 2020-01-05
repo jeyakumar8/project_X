@@ -5,6 +5,7 @@ class CreateTableStores < ActiveRecord::Migration[6.0]
     	 t.decimal "latitude"
     	 t.decimal "longitude"
     	 t.string "s_eta"
+    	 t.integer "current_load"
     end
   end
 end

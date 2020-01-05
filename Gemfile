@@ -19,6 +19,21 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 gem 'pg'
+
+gem 'google_distance_matrix'
+
+gem 'rest-client'
+gem 'rack-cors', :require => 'rack/cors'
+
+# gem 'foursquare2'
+# gem 'faraday'
+gem 'geocoder'
+gem 'chewy'
+
+
+gem 'elasticsearch-model', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
+gem 'elasticsearch-rails', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

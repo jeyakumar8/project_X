@@ -1,10 +1,11 @@
 class Store < ApplicationRecord
+<<<<<<< HEAD
   has_many :stores_products
   has_many :stores_drivers
   has_many :products, through: :stores_products
   has_many :drivers, through: :stores_drivers
 
-  attr_accessor :distance_in_meter
+  attr_accessor :distance_in_meter, :final_eta
 
   def self.near_by(lat, lng, radius)
   	bounding_distance = radius/111.111

@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2020_01_04_152001) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.string "s_eta"
+    t.integer "current_load"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "latitude"
+    t.string "longitude"
   end
 
   create_table "stores_drivers", force: :cascade do |t|

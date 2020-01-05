@@ -1,3 +1,5 @@
 tmp/
 log/development.log
 log/dev.log
+/log/*
+/tmp

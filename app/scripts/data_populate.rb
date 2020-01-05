@@ -6,7 +6,7 @@ StoresProduct.destroy_all
 NO_OF_DRIVERS = 3
 NO_OF_STORES = 3
 NO_OF_PRODUCT = 3
-kk = [[13.0040793,80.249329], [12.987105, 80.243977], [12.9624185,80.2537272]]
+kk = [[13.0040793,80.249329], [12.987105, 80.243977], [100.9624185,100.2537272]]
 (1..NO_OF_STORES).each do |i|
 	data = Store.new
 	data.store_name = "Store" + i.to_s
@@ -42,6 +42,13 @@ StoresProduct.create(store_id: Store.first.id + 0 , product_id:  Product.first.i
 StoresProduct.create(store_id: Store.first.id + 1 , product_id:  Product.first.id + 0, product_rating: rand(1..4).to_s + '.' + rand(9).to_s)
 StoresProduct.create(store_id: Store.first.id + 1 , product_id:  Product.first.id + 1, product_rating: rand(1..4).to_s + '.' + rand(9).to_s)
 StoresProduct.create(store_id: Store.first.id + 2 , product_id:  Product.first.id + 0, product_rating: rand(1..4).to_s + '.' + rand(9).to_s)
+Store.near_by(13, 80, 30/111.111, 30)
+
+def get_value(lat1, long2, destinations)
+
+end
+
+https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=40.6655101,-73.89188969999998&destinations=40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.6905615%2C-73.9976592%7C40.659569%2C-73.933783%7C40.729029%2C-73.851524%7C40.6860072%2C-73.6334271%7C40.598566%2C-73.7527626%7C40.659569%2C-73.933783%7C40.729029%2C-73.851524%7C40.6860072%2C-73.6334271%7C40.598566%2C-73.7527626&key=YOUR_API_KEY
 
 
 

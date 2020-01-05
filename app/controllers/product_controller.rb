@@ -2,17 +2,17 @@ class ProductController < ApplicationController
 
   def show
     params.require(:id)
-    render json: { statusCode: 200 }.merge(present_produt(Product.find(params[:id])))
+    render json: Product.find(params[:id]), status: 200
   end
 
   def index
-    render json: Product.all.map{|p| present_produt(p)}, status: 200
+    render json: Product.all, status: 200
   end
 
   def autosuggest
     params.require(:query)
     products = Product.where("lower(name) like lower(:query)", query: "%#{params[:query]}%")
-    render json: products.map{|p| present_produt(p)}, status: 200
+    render json: products, status: 200
   end
 
   private

@@ -12,5 +12,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+    post '/calculate_distance', to: 'distance#calculate_distance'
+    post '/create_user', to: 'user#create_user'
+    post '/proceed_to_pay', to: 'distance#proceed_to_pay'
 
 end
